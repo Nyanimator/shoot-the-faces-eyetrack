@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>BANG!</title>
+	<style type="text/css">
+		body{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: #251801;
+	cursor: url('gun.png'), pointer;
+}
+#juicy{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Century Gothic;
+	font-weight: bolder;
+	color: white;
+}
+#btn{
+	border-radius: 10px;
+	border: none;
+	font-family: Century Gothic;
+	width: 120px;
+	height: 50px;
+	background-color: black;
+	color: white;
+	cursor: url('gun.png'), pointer;
+}
+.container{
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	width: 100%;
+}
+.container .face{
+	position: relative;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	background: #ffcd00;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 20px;
+}
+.container .face:hover{
+	background: linear-gradient(180deg, #f44336, #f44336, #ffcd00);
+}
+.container .face:before{
+	content: '';
+	position: absolute;
+	top: 180px;
+	width: 150px;
+	height: 70px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	background: #b57700;
+	transition: 0.5s;
+}
+.container .face:hover:before{
+	top: 210px;
+	width: 150px;
+	height: 20px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	background: #9d0b00;
+	transition: 0.5s;
+}
+.container .face .eyes{
+	position: relative;
+	top: -40px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.container .face .eyes .eye{
+	position: relative;
+	width: 80px;
+	height: 80px;
+	display: block;
+	margin: 0 15px;
+	background: #fff;
+	border-radius: 50%;
+}
+.container .face .eyes .eye:before{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 25px;
+	transform: translate(-50%, -50%);
+	width: 40px;
+	height: 40px;
+	background: #333;
+	border-radius: 50%;
+}
+.container h2{
+	position: absolute;
+	top: 75px;
+	font-size: 4em;
+	color: #fff;
+}
+.container h2:last-child{
+	position: absolute;
+	top: initial;
+	bottom: 75px;;
+	font-size: 4em;
+	color: #fff;
+}
+.container .dead{
+	position: relative;
+	width: 300px;
+	height: 300px;
+	border-radius: 50%;
+	background: #666666;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 20px;
+}
+.container .dead:hover{
+	background: linear-gradient(180deg, #666666, #666666, #666666);
+}
+.container .dead:before{
+	content: '';
+	position: absolute;
+	top: 210px;
+	width: 150px;
+	height: 25px;
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	background: #b57700;
+	transition: 0.5s;
+}
+.container .dead:hover:before{
+	top: 210px;
+	width: 150px;
+	height: 20px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
+	background: #9d0b00;
+	transition: 0.5s;
+}
+.container .dead .myats{
+	position: relative;
+	top: -40px;
+	display: flex;
+	flex-wrap: wrap;
+}
+.container .dead .myats .myat{
+	position: relative;
+	width: 80px;
+	height: 5px;
+	display: block;
+	margin: 0 15px;
+	background: #333;
+	border-radius: 10%;
+}
+
+
+	</style>
+
+</head>
+<body>
+	<div class="container">
+		<h2 id="juicy">OH NO! YOU KILLED THEM!</h2>
+		<a href="bang7.html" style="cursor: url('gun.png'), pointer">
+		<div class="face">
+			<div class="eyes">
+				<span class="eye"></span>
+				<span class="eye"></span>
+			</div>
+		</div>
+	</a>
+	<a href="bang6.html" style="cursor: url('gun.png'), pointer">
+		<div class="face">
+			<div class="eyes">
+				<span class="eye"></span>
+				<span class="eye"></span>
+			</div>
+		</div>
+	</a>
+		<div class="dead">
+			<div class="myats">
+				<span class="myat"></span>
+				<span class="myat"></span>
+			</div>
+		</div>
+
+		<a href="index.html"><h2 id="juicy">CLICK HERE TO RESSURECT</h2></a>
+	</div>
+	<a href="index.html">
+	</a>
+	<script type="text/javascript">
+		document.querySelector("body").addEventListener("mousemove", eyeball);
+
+function eyeball() {
+    'use strict';
+    var eye = document.querySelectorAll(".eye");
+    eye.forEach(function (eye) {
+        let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2)
+        let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+        let radian = Math.atan2(event.pageX - x, event.pageY - y);
+        let rot = (radian * (180 / Math.PI) * -1) + 270;
+        eye.style.transform  = "rotate("+ rot +"deg)"
+    })
+}
+	</script>
+</body>
+</html>
